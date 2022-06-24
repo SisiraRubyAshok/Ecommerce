@@ -1,5 +1,5 @@
-class ShoppingCart < ApplicationRecord
-	belongs_to :user , foreign_key: "user_id"
+class ShoppingCart < ApplicationRecord	
 	has_many :product_shopping_carts
 	has_many :products , through: :product_shopping_carts
+	belongs_to :user
 end

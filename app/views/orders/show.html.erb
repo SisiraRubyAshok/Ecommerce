@@ -1,10 +1,37 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @order %>
+<div id="orders">
+  <% @order.products.each do |product| %>
+    <p>
+    <strong>Product Name:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= product.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= product.price %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%= find_quantity(product.id,@order.id) %>
+  </p>
+   <p>
+    <strong>Total:</strong>
+    <%= product.price*find_quantity(product.id,@order.id) %>
+  </p>
+  <% end %>
+</div>
 
 <div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
+  <%#= link_to "Edit this order", edit_order_path(@order) %> |
+  <%= link_to "Back to products", products_path %>
 
-  <%= button_to "Destroy this order", @order, method: :delete %>
+  <%= button_to "Remove order", @order, method: :delete %>
+  <button>Proceed payment</button>
 </div>

@@ -3,12 +3,32 @@
 <h1>Shopping carts</h1>
 
 <div id="shopping_carts">
-  <% @shopping_carts.each do |shopping_cart| %>
-    <%= render shopping_cart %>
+  <%# @shopping_carts.each do |shopping_cart| %>
+  <% @shopping_cart.products.each_with_index do |product,index| %>
+  
     <p>
-      <%= link_to "Show this shopping cart", shopping_cart %>
-    </p>
-  <% end %>
-</div>
+    <strong>Product Name:</strong>
+    <%= product.name %>
+  </p>
 
-<%= link_to "New shopping cart", new_shopping_cart_path %>
+  <p>
+    <strong>Description:</strong>
+    <%= product.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= product.price %>
+ |
+    <strong>Quantity:</strong>
+    <%= find_quantity(product.id,@shopping_cart.id) %>
+  |
+    <strong>Total:</strong>
+    <%= product.price*find_quantity(product.id,@shopping_cart.id) %>
+  </p>
+    <%end%>
+</div>
+<div> <strong>Subtotal: <%= find_subtotal(@shopping_cart.products,@shopping_cart.id) %></strong></div>
+<%= link_to "Add Another item", products_path %>
+</br>
+<button>Proceed payment</button>

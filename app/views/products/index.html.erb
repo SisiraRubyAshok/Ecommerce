@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
+<strong> <%= link_to "Go to Cart", shopping_carts_path %></strong>
+<strong><%= link_to "Show Orders", orders_path %></strong>
+
 <h1>Products</h1>
 
 <div id="products">
   <% @products.each do |product| %>
     <%= render product %>
     <p>
-      <%= link_to "Show this product", product %>
+      <%#= link_to "Show this product", product %>
+      <%= link_to "Add to cart", new_shopping_cart_path(:product_id => product.id,:user_id =>@user.id) %>
+      <%= link_to "Order Now", new_order_path(:product_id => product.id,:user_id =>@user.id) %>
+      <%#= button_to "Order Now" %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New product", new_product_path %>

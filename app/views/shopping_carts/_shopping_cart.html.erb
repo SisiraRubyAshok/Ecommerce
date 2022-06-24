@@ -1,2 +1,27 @@
 <div id="<%= dom_id shopping_cart %>">
+<% @products.each_with_index do |product,index| %>
+	<p>
+    <strong>Product Name:</strong>
+    <%= product.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%#= product.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%#= product.price %>
+  </p>
+
+  <p>
+    <strong>Quantity:</strong>
+    <%#= product.price %>
+  </p>
+   <p>
+    <strong>Total:</strong>
+    <%#= product.price %>
+  </p>
+<%end%>
 </div>
